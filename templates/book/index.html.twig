@@ -1,0 +1,29 @@
+<table>
+    <thead>
+        <tr> 
+            <th>ID</th>
+            <th>Title</th>
+            <th>Publication Date</th>
+            <th>Enabled</th>
+            <th>Actions</th> 
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %} 
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.publicationDate ? book.publicationDate|date('Y-m-d') : 'N/A' }}</td> 
+            <td>{{ book.enabled ? 'Yes' : 'No' }}</td>
+            <td>
+                <a href="{{ path('app_book_delete', {'id': book.id}) }}" 
+                   onclick="return confirm('Are you sure you want to delete this book?');">Delete</a> 
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No books found</td> 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

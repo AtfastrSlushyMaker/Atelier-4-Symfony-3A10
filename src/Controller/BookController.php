@@ -52,7 +52,7 @@ class BookController extends AbstractController
     #[Route(path: '/book/getall', name: 'app_book_getall')]
     public function getAllBooks(BookRepository $repo): Response
     {
-        return $this->render('book/booksList.html.twig', [
+        return $this->render('book/index.html.twig', [
             'books' => $repo->findAll(), // Changed "book" to "books" to reflect a list
         ]);
     }
